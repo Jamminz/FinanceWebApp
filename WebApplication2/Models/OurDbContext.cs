@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApplication2.Models
 {
-    public class ApplicationDbContext : DbContext
+    public class OurDbContext : DbContext
     {
         public DbSet<User> Users { get; set; } 
     }

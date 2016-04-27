@@ -24,7 +24,7 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (ApplicationDbContext db = new ApplicationDbContext())
+                using (OurDbContext db = new OurDbContext())
                 {
                     string username = user.UserName;
                     string password = user.Password;
@@ -59,6 +59,40 @@ namespace WebApplication2.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        public ActionResult Register()
+        {
+            return View();
+        }
 
+        [HttpPost]
+        public ActionResult Register(User usr)
+        {
+            using (OurDbContext db = new OurDbContext())
+            {
+                //string[] names = (from c in db.Users
+                //                  select c.UserName).ToArray();
+
+                //foreach (var i in names)
+                //{
+                    if (db.Users.Any(o => o.UserName == usr.UserName))
+                    {
+                        ModelState.AddModelError("", "Username already exists");
+                    }
+                    else
+                    {
+                        db.Users.Add(usr);
+                        db.SaveChanges();
+
+                        return RedirectToAction("Index", "Home");
+                    }
+
+                }
+
+            //}
+
+            return View();
+        }
     }
+
+
 }
