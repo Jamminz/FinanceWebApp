@@ -21,7 +21,11 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li class ="pull-right">
+                    <li class="pull-right">
+                    <li>@Html.ActionLink("About", "Index", "About")</li>
+                        <li>@Html.ActionLink("Support", "Index", "Support")</li>
+                    <li>@Html.ActionLink("Finances", "Index", "Finance")</li>
+                    <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
                         <li>@Html.ActionLink("Register", "Index", "Register")</li>
                         <li>@Html.ActionLink("Log In", "Index", "Account")</li>
                     </li>
@@ -33,7 +37,7 @@
     <div class="container body-content">
         @if (Session["UserID"] != null)
         {
-            <h4>Hello, @Session["UserID"].ToString() . @Html.ActionLink("Log out", "Logoff", "Account")</h4>
+            <h4>Hello, @Session["UserID"].ToString() @Html.ActionLink("Log out", "Logoff", "Account")</h4>
         }
         @RenderBody()
         <hr />

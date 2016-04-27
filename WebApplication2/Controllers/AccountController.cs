@@ -20,7 +20,7 @@ namespace WebApplication2.Controllers
         }
 
         [HttpPost]
-        public ActionResult Index(User user)
+        public ActionResult Index(User user, string returnUrl)
         {
             if (ModelState.IsValid)
             {
@@ -34,7 +34,14 @@ namespace WebApplication2.Controllers
                     {
                         FormsAuthentication.SetAuthCookie(username, false);
                         Session["UserID"] = username;
-                        return RedirectToAction("Index", "Home");
+
+                        if (returnUrl != null) 
+                            return Redirect(returnUrl);
+                        else
+                        {
+                            return RedirectToAction("Index", "Dashboard");
+                        }
+                        
                     }
                     else ModelState.AddModelError("", "The user name or password does not exist");
                 }
