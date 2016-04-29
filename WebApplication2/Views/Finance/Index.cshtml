@@ -3,5 +3,10 @@
     ViewBag.Title = "Finance";
 }
 
-<h2>Finance</h2>
+<h2>A Place to manage your ingoings and outgoings.</h2>
+<h4>Please select one of the following</h4>
 
+<div>
+    <a href="@Url.Action("Index", "Incomes")"><button type="button" class="btn btn-secondary">Income</button></a>
+    <a href="@Url.Action("Index","Expenditures")"><button type="button" class="btn btn-secondary">Expenditure</button></a>
+</div>

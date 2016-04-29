@@ -24,7 +24,7 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (OurDbContext db = new OurDbContext())
+                using (NexcoDbContext db = new NexcoDbContext())
                 {
                     string username = user.UserName;
                     string password = user.Password;
@@ -67,7 +67,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Register(User usr)
         {
-            using (OurDbContext db = new OurDbContext())
+            using (NexcoDbContext db = new NexcoDbContext())
             {
                 //string[] names = (from c in db.Users
                 //                  select c.UserName).ToArray();
@@ -83,7 +83,7 @@ namespace WebApplication2.Controllers
                         db.Users.Add(usr);
                         db.SaveChanges();
 
-                        return RedirectToAction("Index", "Home");
+                        return RedirectToAction("Index", "Account");
                     }
 
                 }

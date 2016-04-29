@@ -6,8 +6,10 @@ using System.Web;
 
 namespace WebApplication2.Models
 {
-    public class OurDbContext : DbContext
+    public class NexcoDbContext : DbContext
     {
         public DbSet<User> Users { get; set; } 
+        public DbSet<Expenditure> Expenditures { get; set; }
+        public DbSet<Income> Incomes { get; set; }
     }
 }

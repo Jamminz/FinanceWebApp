@@ -19,7 +19,7 @@
                 </button>
                 @Html.ActionLink("Nexco Finance", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse pull-right">
                 <ul class="nav navbar-nav">
                     <li class="pull-right">
                     <li>@Html.ActionLink("About", "Index", "About")</li>
@@ -27,7 +27,16 @@
                     <li>@Html.ActionLink("Finances", "Index", "Finance")</li>
                     <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
                         <li>@Html.ActionLink("Register", "Register", "Account")</li>
-                        <li>@Html.ActionLink("Log In", "Index", "Account")</li>
+                        <li>
+                            @if (Session["UserID"] != null)
+                            {
+                                @Html.ActionLink("Log out", "Logoff", "Account")
+                            }
+                            else
+                            {
+                                @Html.ActionLink("Log In", "Index", "Account")
+                            }
+                        </li>
                     </li>
                 </ul>
             </div>
@@ -35,10 +44,6 @@
     </div>
 
     <div class="container body-content">
-        @if (Session["UserID"] != null)
-        {
-            <h4>Hello, @Session["UserID"].ToString() @Html.ActionLink("Log out", "Logoff", "Account")</h4>
-        }
         @RenderBody()
         <hr />
         <footer>
