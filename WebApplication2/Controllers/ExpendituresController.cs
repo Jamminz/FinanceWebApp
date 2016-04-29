@@ -18,7 +18,12 @@ namespace WebApplication2.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Expenditures.ToList());
+            string findUser = Session["UserID"].ToString();
+            var currentUser = from o in db.Expenditures
+                              where o.CreatedBy == findUser
+                              select o;
+
+            return View(currentUser.ToList());
         }
 
         // GET: Expenditures/Details/5
@@ -54,6 +59,7 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
+                expenditure.CreatedBy = Session["UserID"].ToString();
                 db.Expenditures.Add(expenditure);
                 db.SaveChanges();
                 return RedirectToAction("Index");

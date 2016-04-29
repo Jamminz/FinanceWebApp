@@ -4,6 +4,7 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
+using System.Reflection.Emit;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
@@ -18,7 +19,12 @@ namespace WebApplication2.Controllers
         [Authorize]
         public ActionResult Index()
         {
-            return View(db.Incomes.ToList());
+            string findUser = Session["UserID"].ToString();
+                var currentUser = from o in db.Incomes
+                    where o.CreatedBy == findUser
+                    select o;
+
+                return View(currentUser.ToList());
         }
 
         // GET: Incomes/Details/5
