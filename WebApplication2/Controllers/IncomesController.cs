@@ -13,7 +13,7 @@ namespace WebApplication2.Controllers
     [Authorize]
     public class IncomesController : Controller
     {
-        private NSFDbContext db = new NSFDbContext();
+        private NexFinDbContext db = new NexFinDbContext();
 
         // GET: Incomes
         public ActionResult Index()

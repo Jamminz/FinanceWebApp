@@ -23,41 +23,47 @@
                 <ul class="nav navbar-nav">
                     <li class="pull-right">
                     <li>@Html.ActionLink("About", "Index", "About")</li>
-                        <li>@Html.ActionLink("Support", "Index", "Support")</li>
+                    <li>@Html.ActionLink("Support", "Index", "Support")</li>
                     <li>@Html.ActionLink("Finances", "Index", "Finance")</li>
                     <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
-                        <li>@Html.ActionLink("Register", "Register", "Account")</li>
                     <li>
-                        @if (Session["UserID"] != null)
-                        {
-                            @Html.ActionLink("Welcome, " + Session["UserID"], "Index", "Manage")
-                        }
-                    </li>
-                        <li>
-                            @if (Session["UserID"] != null)
-                            {
-                                @Html.ActionLink("Log out", "Logoff", "Account")
-                            }
-                            else
-                            {
-                                @Html.ActionLink("Log In", "Index", "Account")
-                            }
-                        </li>
-                    </link>
-                </ul>
-            </div>
+                        @if (Session["UserID"] == null)
+                    {
+                        @Html.ActionLink("Register", "Register", "Account")
+
+                    }
+                </li>
+                <li>
+                    @if (Session["UserID"] != null)
+                    {
+                        @Html.ActionLink("Welcome, " + Session["UserID"], "Index", "Manage")
+                    }
+                </li>
+                <li>
+                    @if (Session["UserID"] != null)
+                    {
+                        @Html.ActionLink("Log out", "Logoff", "Account")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Log In", "Index", "Account")
+                    }
+                </li>
+                </link>
+            </ul>
         </div>
     </div>
+</div>
 
-    <div class="container body-content">
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Nexco Finance Solutions</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    @RenderBody()
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Nexco Finance Solutions</p>
+    </footer>
+</div>
 
-    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.min.js"></script>
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

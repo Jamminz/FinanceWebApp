@@ -12,7 +12,7 @@ namespace WebApplication2.Controllers
 {
     public class ManageController : Controller
     {
-        private NSFDbContext db = new NSFDbContext();
+        private NexFinDbContext db = new NexFinDbContext();
 
         // GET: Manage
         [Authorize]

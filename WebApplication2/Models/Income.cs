@@ -10,7 +10,7 @@ namespace WebApplication2.Models
     public class Income
     {
         public int IncomeId { get; set; }
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
         public IncomeCategory Category { get; set; }
         public string Desciption { get; set; }
 

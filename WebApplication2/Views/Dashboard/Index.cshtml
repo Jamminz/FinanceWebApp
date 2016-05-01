@@ -34,92 +34,98 @@
                     <li>@Html.ActionLink("Support", "Index", "Support")</li>
                     <li>@Html.ActionLink("Finances", "Index", "Finance")</li>
                     <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
-                    <li>@Html.ActionLink("Register", "Register", "Account")</li>
                     <li>
-                        @if (Session["UserID"] != null)
-                        {
-                            @Html.ActionLink("Welcome, " + Session["UserID"], "Index", "Manage")
-                        }
-                    </li>
-                    <li>
-                        @if (Session["UserID"] != null)
-                        {
-                            @Html.ActionLink("Log out", "Logoff", "Account")
-                        }
-                        else
-                        {
-                            @Html.ActionLink("Log In", "Index", "Account")
-                        }
-                    </li>
-                    </link>
-                </ul>
-            </div>
+                        @if (Session["UserID"] == null)
+                    {
+                        @Html.ActionLink("Register", "Register", "Account")
+
+                    }
+                </li>
+                <li>
+                    @if (Session["UserID"] != null)
+                    {
+                        @Html.ActionLink("Welcome, " + Session["UserID"], "Index", "Manage")
+                    }
+                </li>
+                <li>
+                    @if (Session["UserID"] != null)
+                    {
+                        @Html.ActionLink("Log out", "Logoff", "Account")
+                    }
+                    else
+                    {
+                        @Html.ActionLink("Log In", "Index", "Account")
+                    }
+                </li>
+                </link>
+            </ul>
         </div>
     </div>
+    </div>
 
-    <div id="container" style="width: 550px; height: 400px; margin: 0 auto">
+<div id="container" style="width: 550px; height: 400px; margin: 0 auto">
 
-        <script language="JavaScript">
-            $(document).ready(function () {
-                var chart = {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: null,
-                    plotShadow: false
-                };
-                var title = {
-                    text: 'Overview of monthly finances'
-                };
-                var tooltip = {
-                    pointFormat: '{series.name}'
-                };
-                var plotOptions = {
-                    pie: {
-                        allowPointSelect: true,
-                        cursor: 'pointer',
-                        dataLabels: {
-                            enabled: true,
-                            format: '<b>{point.name}</b>: {point.percentage:.1f} %',
-                            style: {
-                                color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
-                            }
+    <script language="JavaScript">
+        $(document).ready(function () {
+            var chart = {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false
+            };
+            var title = {
+                text: 'Overview of monthly finances'
+            };
+            var tooltip = {
+                pointFormat: '{series.name}'
+            };
+            var plotOptions = {
+                pie: {
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: {
+                        enabled: true,
+                        format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                        style: {
+                            color: (Highcharts.theme && Highcharts.theme.contrastTextColor) || 'black'
                         }
                     }
-                };
-                var series = [{
-                    type: 'pie',
-                    name: 'Income/Expenditure',
-                    data: [
-                       ['Firefox', 45.0],
-                       ['IE', 26.8],
-                       {
-                           name: 'Chrome',
-                           y: 12.8,
-                           sliced: true,
-                           selected: true
-                       },
-                       ['Safari', 8.5],
-                       ['Opera', 6.2],
-                       ['Others', 0.7]
-                    ]
-                }];
+                }
+            };
+            var series = [{
+                type: 'pie',
+                name: 'Income/Expenditure',
+                data: [
+                   ['Firefox', 45.0],
+                   ['IE', 26.8],
+                   {
+                       name: 'Chrome',
+                       y: 12.8,
+                       sliced: true,
+                       selected: true
+                   },
+                   ['Safari', 8.5],
+                   ['Opera', 6.2],
+                   ['Others', 0.7]
+                ]
+            }];
 
-                var json = {};
-                json.chart = chart;
-                json.title = title;
-                json.tooltip = tooltip;
-                json.series = series;
-                json.plotOptions = plotOptions;
-                $('#container').highcharts(json);
-            });
-        </script>
+            var json = {};
+            json.chart = chart;
+            json.title = title;
+            json.tooltip = tooltip;
+            json.series = series;
+            json.plotOptions = plotOptions;
+            $('#container').highcharts(json);
+        });
+    </script>
 
-    </div>
+</div>
 
-    <div class="container body-content">
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - Nexco Finance Solutions</p>
-        </footer>
-    </div>
+<div class="container body-content">
+    <hr />
+    <footer>
+        <p>&copy; @DateTime.Now.Year - Nexco Finance Solutions</p>
+    </footer>
+</div>
 </body>
 </html>

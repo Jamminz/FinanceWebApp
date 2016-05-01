@@ -10,7 +10,7 @@ namespace WebApplication2.Models
     public class Expenditure
     {
         public int ExpenditureId { get; set; }
-        public int Amount { get; set; }
+        public decimal Amount { get; set; }
         public ExpendCategory Category { get; set; }
         public string Desciption { get; set; }
 

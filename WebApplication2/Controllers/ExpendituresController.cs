@@ -13,7 +13,7 @@ namespace WebApplication2.Controllers
     [Authorize]
     public class ExpendituresController : Controller
     {
-        private NSFDbContext db = new NSFDbContext();
+        private NexFinDbContext db = new NexFinDbContext();
 
         // GET: Expenditures
         public ActionResult Index()

@@ -163,7 +163,7 @@
     </Compile>
     <Compile Include="Models\Expenditure.cs" />
     <Compile Include="Models\Income.cs" />
-    <Compile Include="Models\NSFDbContext.cs" />
+    <Compile Include="Models\NexFinDbContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
