@@ -10,24 +10,22 @@ using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
     public class ExpendituresController : Controller
     {
-        private NSDbContext db = new NSDbContext();
+        private NSFDbContext db = new NSFDbContext();
 
         // GET: Expenditures
-        [Authorize]
         public ActionResult Index()
         {
             string findUser = Session["UserID"].ToString();
             var currentUser = from o in db.Expenditures
                               where o.CreatedBy == findUser
                               select o;
-
             return View(currentUser.ToList());
         }
 
         // GET: Expenditures/Details/5
-        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -43,7 +41,6 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Expenditures/Create
-        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -53,9 +50,8 @@ namespace WebApplication2.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExpenditureId,Amount,Desciption,CreatedBy")] Expenditure expenditure)
+        public ActionResult Create([Bind(Include = "ExpenditureId,Amount,Category,Desciption,CreatedBy")] Expenditure expenditure)
         {
             if (ModelState.IsValid)
             {
@@ -87,9 +83,8 @@ namespace WebApplication2.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ExpenditureId,Amount,Desciption,CreatedBy")] Expenditure expenditure)
+        public ActionResult Edit([Bind(Include = "ExpenditureId,Amount,Category,Desciption,CreatedBy")] Expenditure expenditure)
         {
             if (ModelState.IsValid)
             {
@@ -117,7 +112,6 @@ namespace WebApplication2.Controllers
 
         // POST: Expenditures/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

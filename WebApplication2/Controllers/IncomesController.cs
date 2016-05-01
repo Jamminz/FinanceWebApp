@@ -4,31 +4,28 @@ using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Reflection.Emit;
 using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
 
 namespace WebApplication2.Controllers
 {
+    [Authorize]
     public class IncomesController : Controller
     {
-        private NSDbContext db = new NSDbContext();
+        private NSFDbContext db = new NSFDbContext();
 
         // GET: Incomes
-        [Authorize]
         public ActionResult Index()
         {
             string findUser = Session["UserID"].ToString();
-                var currentUser = from o in db.Incomes
-                    where o.CreatedBy == findUser
-                    select o;
-
-                return View(currentUser.ToList());
+            var currentUser = from o in db.Incomes
+                              where o.CreatedBy == findUser
+                              select o;
+            return View(currentUser.ToList());
         }
 
         // GET: Incomes/Details/5
-        [Authorize]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -44,7 +41,6 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Incomes/Create
-        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -54,9 +50,8 @@ namespace WebApplication2.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "IncomeId,Amount,Desciption,CreatedBy")] Income income)
+        public ActionResult Create([Bind(Include = "IncomeId,Amount,Category,Desciption,CreatedBy")] Income income)
         {
             if (ModelState.IsValid)
             {
@@ -70,7 +65,6 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Incomes/Edit/5
-        [Authorize]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,9 +83,8 @@ namespace WebApplication2.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-        [Authorize]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IncomeId,Amount,Desciption,CreatedBy")] Income income)
+        public ActionResult Edit([Bind(Include = "IncomeId,Amount,Category,Desciption,CreatedBy")] Income income)
         {
             if (ModelState.IsValid)
             {
@@ -103,7 +96,6 @@ namespace WebApplication2.Controllers
         }
 
         // GET: Incomes/Delete/5
-        [Authorize]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -120,7 +112,6 @@ namespace WebApplication2.Controllers
 
         // POST: Incomes/Delete/5
         [HttpPost, ActionName("Delete")]
-        [Authorize]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

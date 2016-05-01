@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class DashboardController : Controller
     {
-        private NSDbContext db = new NSDbContext();
+        private NSFDbContext db = new NSFDbContext();
 
         // GET: Dashboard
         [Authorize]

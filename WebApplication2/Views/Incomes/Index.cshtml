@@ -6,11 +6,8 @@
 
 <div style="margin-top: 10px;">
     <a href="@Url.Action("Index", "Incomes")"><button type="button" class="btn btn-secondary">Income</button></a>
-    <a href="@Url.Action("Index", "Expenditures")"><button type="button" class="btn btn-secondary">Expenditure</button></a>
+    <a href="@Url.Action("Index","Expenditures")"><button type="button" class="btn btn-secondary">Expenditure</button></a>
 </div>
-
-<h2>Income</h2>
-
 
 <h2>Index</h2>
 
@@ -23,6 +20,9 @@
             @Html.DisplayNameFor(model => model.Amount)
         </th>
         <th>
+            @Html.DisplayNameFor(model => model.Category)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.Desciption)
         </th>
         <th></th>
@@ -32,6 +32,9 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.Amount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Category)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Desciption)

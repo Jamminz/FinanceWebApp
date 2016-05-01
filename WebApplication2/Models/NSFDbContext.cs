@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApplication2.Models
 {
-    public class NSDbContext : DbContext
+    public class NSFDbContext : DbContext
     {
         public DbSet<User> Users { get; set; } 
         public DbSet<Expenditure> Expenditures { get; set; }

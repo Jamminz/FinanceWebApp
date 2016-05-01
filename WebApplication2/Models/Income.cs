@@ -11,9 +11,18 @@ namespace WebApplication2.Models
     {
         public int IncomeId { get; set; }
         public int Amount { get; set; }
+        public IncomeCategory Category { get; set; }
         public string Desciption { get; set; }
 
         [HiddenInput]
         public string CreatedBy { get; set; }
+    }
+
+    public enum IncomeCategory
+    {
+        Bonus,
+        Refund,
+        Overtime,
+        Liquidation
     }
 }

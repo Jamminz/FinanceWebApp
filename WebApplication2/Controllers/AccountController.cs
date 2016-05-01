@@ -24,7 +24,7 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (NSDbContext db = new NSDbContext())
+                using (NSFDbContext db = new NSFDbContext())
                 {
                     string username = user.UserName;
                     string password = user.Password;
@@ -67,7 +67,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Register(User usr)
         {
-            using (NSDbContext db = new NSDbContext())
+            using (NSFDbContext db = new NSFDbContext())
             {
                     if (db.Users.Any(o => o.UserName == usr.UserName))
                     {
