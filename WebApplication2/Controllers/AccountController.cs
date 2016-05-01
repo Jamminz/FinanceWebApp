@@ -22,9 +22,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Index(User user, string returnUrl)
         {
-            if (ModelState.IsValid)
-            {
-                using (NexFinDbContext db = new NexFinDbContext())
+                using (NexcFinDbContext db = new NexcFinDbContext())
                 {
                     string username = user.UserName;
                     string password = user.Password;
@@ -45,7 +43,6 @@ namespace WebApplication2.Controllers
                     }
                     else ModelState.AddModelError("", "The user name or password does not exist");
                 }
-            }
 
             return View();
         }
@@ -67,7 +64,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Register(User usr)
         {
-            using (NexFinDbContext db = new NexFinDbContext())
+            using (NexcFinDbContext db = new NexcFinDbContext())
             {
                     if (db.Users.Any(o => o.UserName == usr.UserName))
                     {
@@ -82,8 +79,6 @@ namespace WebApplication2.Controllers
                     }
 
                 }
-
-            //}
 
             return View();
         }

@@ -145,7 +145,6 @@
     <Content Include="scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="scripts\modernizr-2.6.2.js" />
     <Content Include="Web.config" />
-    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -163,7 +162,7 @@
     </Compile>
     <Compile Include="Models\Expenditure.cs" />
     <Compile Include="Models\Income.cs" />
-    <Compile Include="Models\NexFinDbContext.cs" />
+    <Compile Include="Models\NexcFinDbContext.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,6 +198,7 @@
     <Content Include="Views\Incomes\Details.cshtml" />
     <Content Include="Views\Incomes\Edit.cshtml" />
     <Content Include="Views\Incomes\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

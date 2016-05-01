@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class DashboardController : Controller
     {
-        private NexFinDbContext db = new NexFinDbContext();
+        private NexcFinDbContext db = new NexcFinDbContext();
         
         //Bonus,
         //Refund,
