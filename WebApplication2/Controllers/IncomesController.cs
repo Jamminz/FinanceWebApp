@@ -13,7 +13,7 @@ namespace WebApplication2.Controllers
 {
     public class IncomesController : Controller
     {
-        private NexcoDbContext db = new NexcoDbContext();
+        private NSDbContext db = new NSDbContext();
 
         // GET: Incomes
         [Authorize]

@@ -24,7 +24,7 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                using (NexcoDbContext db = new NexcoDbContext())
+                using (NSDbContext db = new NSDbContext())
                 {
                     string username = user.UserName;
                     string password = user.Password;
@@ -67,13 +67,8 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Register(User usr)
         {
-            using (NexcoDbContext db = new NexcoDbContext())
+            using (NSDbContext db = new NSDbContext())
             {
-                //string[] names = (from c in db.Users
-                //                  select c.UserName).ToArray();
-
-                //foreach (var i in names)
-                //{
                     if (db.Users.Any(o => o.UserName == usr.UserName))
                     {
                         ModelState.AddModelError("", "Username already exists");

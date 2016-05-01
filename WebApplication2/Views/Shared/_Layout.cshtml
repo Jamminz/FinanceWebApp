@@ -27,6 +27,12 @@
                     <li>@Html.ActionLink("Finances", "Index", "Finance")</li>
                     <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
                         <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                    <li>
+                        @if (Session["UserID"] != null)
+                        {
+                            @Html.ActionLink("Welcome, " + Session["UserID"], "Index", "Manage")
+                        }
+                    </li>
                         <li>
                             @if (Session["UserID"] != null)
                             {
@@ -37,7 +43,7 @@
                                 @Html.ActionLink("Log In", "Index", "Account")
                             }
                         </li>
-                    </li>
+                    </link>
                 </ul>
             </div>
         </div>

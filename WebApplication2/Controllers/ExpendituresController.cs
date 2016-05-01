@@ -12,7 +12,7 @@ namespace WebApplication2.Controllers
 {
     public class ExpendituresController : Controller
     {
-        private NexcoDbContext db = new NexcoDbContext();
+        private NSDbContext db = new NSDbContext();
 
         // GET: Expenditures
         [Authorize]
