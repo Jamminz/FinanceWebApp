@@ -11,11 +11,6 @@ namespace WebApplication2.Controllers
     {
         private NexcFinDbContext db = new NexcFinDbContext();
         
-        //Bonus,
-        //Refund,
-        //Overtime,
-        //Liquidation
-
         // GET: Dashboard
         [Authorize]
         public ActionResult Index()
@@ -162,6 +157,13 @@ namespace WebApplication2.Controllers
             {
                 ViewBag.overtimeTotal += i;
             }
+
+            /*************************************************************************************************/
+
+            ViewBag.remainingSalary = ViewBag.salary - ViewBag.entertainmentTotal - ViewBag.educationTotal -
+                                      ViewBag.foodTotal -
+                                      ViewBag.healthTotal - ViewBag.utilityTotal + ViewBag.bonusTotal +
+                                      ViewBag.liquidationTotal + ViewBag.refundTotal + ViewBag.overtimeTotal;
 
             /*************************************************************************************************/
 
