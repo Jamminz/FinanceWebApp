@@ -8,6 +8,7 @@ using System.Web.Configuration;
 using System.Web.Mvc;
 using System.Web.Security;
 using WebApplication2.Models;
+using Roles = WebApplication2.Models.Roles;
 
 namespace WebApplication2.Controllers
 {
@@ -22,18 +23,34 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Index(User user, string returnUrl)
         {
-                using (NexcFinDbContext db = new NexcFinDbContext())
+                using (NexcFinaDbContext db = new NexcFinaDbContext())
                 {
                     string username = user.UserName;
                     string password = user.Password;
                     bool userValid = db.Users.Any(o => o.UserName == username && user.Password == password);
+                    bool isAdmin = false;
 
                     if (userValid)
                     {
-                        FormsAuthentication.SetAuthCookie(username, false);
+                        FormsAuthentication.SetAuthCookie(username, true);
                         Session["UserID"] = username;
 
-                        if (returnUrl != null) 
+                        var adminCheck = from o in db.Users
+                            where o.UserName == username
+                            select o;
+
+                        foreach (var i in adminCheck)
+                        {
+                            if (i.Role == Roles.Admin)
+                                isAdmin = true;
+                        }
+
+                        if (isAdmin)
+                        {
+                            Session["Admin"] = 1;
+                        }
+    
+                    if (returnUrl != null) 
                             return Redirect(returnUrl);
                         else
                         {
@@ -52,6 +69,7 @@ namespace WebApplication2.Controllers
         {
             FormsAuthentication.SignOut();
             Session["UserID"] = null;
+            Session["Admin"] = null;
 
             return RedirectToAction("Index", "Home");
         }
@@ -64,7 +82,7 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Register(User usr)
         {
-            using (NexcFinDbContext db = new NexcFinDbContext())
+            using (NexcFinaDbContext db = new NexcFinaDbContext())
             {
                     if (db.Users.Any(o => o.UserName == usr.UserName))
                     {
@@ -72,6 +90,7 @@ namespace WebApplication2.Controllers
                     }
                     else
                     {
+                        usr.Role = Roles.User;
                         db.Users.Add(usr);
                         db.SaveChanges();
 

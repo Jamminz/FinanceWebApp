@@ -9,7 +9,7 @@ namespace WebApplication2.Controllers
 {
     public class DashboardController : Controller
     {
-        private NexcFinDbContext db = new NexcFinDbContext();
+        private NexcFinaDbContext db = new NexcFinaDbContext();
         
         // GET: Dashboard
         [Authorize]

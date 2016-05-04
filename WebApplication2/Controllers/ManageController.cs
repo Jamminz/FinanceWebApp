@@ -12,7 +12,7 @@ namespace WebApplication2.Controllers
 {
     public class ManageController : Controller
     {
-        private NexcFinDbContext db = new NexcFinDbContext();
+        private NexcFinaDbContext db = new NexcFinaDbContext();
 
         // GET: Manage
         [Authorize]

@@ -8,24 +8,20 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
 
-namespace WebApplication2.Controllers
+namespace WebApplication2.Controllers.Admin
 {
-    [Authorize]
-    public class ExpendituresController : Controller
+    [Authorize(Roles="Admin")]
+    public class AdminExpendituresController : Controller
     {
         private NexcFinaDbContext db = new NexcFinaDbContext();
 
-        // GET: Expenditures
+        // GET: AdminExpenditures
         public ActionResult Index()
         {
-            string findUser = Session["UserID"].ToString();
-            var currentUser = from o in db.Expenditures
-                              where o.CreatedBy == findUser
-                              select o;
-            return View(currentUser.ToList());
+            return View(db.Expenditures.ToList());
         }
 
-        // GET: Expenditures/Details/5
+        // GET: AdminExpenditures/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -40,13 +36,13 @@ namespace WebApplication2.Controllers
             return View(expenditure);
         }
 
-        // GET: Expenditures/Create
+        // GET: AdminExpenditures/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Expenditures/Create
+        // POST: AdminExpenditures/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -55,7 +51,6 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
-                expenditure.CreatedBy = Session["UserID"].ToString();
                 db.Expenditures.Add(expenditure);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -64,7 +59,7 @@ namespace WebApplication2.Controllers
             return View(expenditure);
         }
 
-        // GET: Expenditures/Edit/5
+        // GET: AdminExpenditures/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -79,7 +74,7 @@ namespace WebApplication2.Controllers
             return View(expenditure);
         }
 
-        // POST: Expenditures/Edit/5
+        // POST: AdminExpenditures/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -95,7 +90,7 @@ namespace WebApplication2.Controllers
             return View(expenditure);
         }
 
-        // GET: Expenditures/Delete/5
+        // GET: AdminExpenditures/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -110,7 +105,7 @@ namespace WebApplication2.Controllers
             return View(expenditure);
         }
 
-        // POST: Expenditures/Delete/5
+        // POST: AdminExpenditures/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

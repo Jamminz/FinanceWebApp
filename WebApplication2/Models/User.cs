@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
+using System.Web.Security;
 
 namespace WebApplication2.Models
 {
@@ -27,6 +29,16 @@ namespace WebApplication2.Models
         [Required]
         [DataType(DataType.Password)]
         public string Password { get; set; }
+
+        [HiddenInput]
+        public Roles Role { get; set; }
+
+    }
+
+    public enum Roles
+    {
+        Admin,
+        User
     }
 
 }

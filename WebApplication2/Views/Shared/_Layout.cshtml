@@ -6,9 +6,10 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     <link href="~/Content/Site.css" rel="stylesheet" type="text/css" />
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <script src="~/Scripts/clock.js"></script>
     <script src="~/Scripts/modernizr-2.6.2.js"></script>
 </head>
-<body>
+<body onload="clockUpdate(); setInterval('clockUpdate()', 1000 )">
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -28,42 +29,49 @@
                     <li>@Html.ActionLink("Dashboard", "Index", "Dashboard")</li>
                     <li>
                         @if (Session["UserID"] == null)
-                    {
-                        @Html.ActionLink("Register", "Register", "Account")
+                        {
+                            @Html.ActionLink("Register", "Register", "Account")
 
-                    }
-                </li>
-                <li>
-                    @if (Session["UserID"] != null)
-                    {
-                        @Html.ActionLink("Welcome, " + Session["UserID"], "Index", "Manage")
-                    }
-                </li>
-                <li>
-                    @if (Session["UserID"] != null)
-                    {
-                        @Html.ActionLink("Log out", "Logoff", "Account")
-                    }
-                    else
-                    {
-                        @Html.ActionLink("Log In", "Index", "Account")
-                    }
-                </li>
-                </link>
-            </ul>
+                        }
+                    </li>
+                    <li>
+                        @if (Session["Admin"] != null)
+                        {
+                            @Html.ActionLink("Admin", "Index", "AdminUsers")
+                        }
+                    </li>
+                    <li>
+                        @if (Session["UserID"] != null)
+                        {
+                            @Html.ActionLink("Welcome, " + Session["UserID"], "Index", "Manage")
+                        }
+                    </li>
+                    <li>
+                        @if (Session["UserID"] != null)
+                        {
+                            @Html.ActionLink("Log out", "Logoff", "Account")
+                        }
+                        else
+                        {
+                            @Html.ActionLink("Log In", "Index", "Account")
+                        }
+                    </li>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
-</div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <div>
+                <p>&copy; @DateTime.Now.Year - Nexco Finance Solutions <span class="pull-right" id="clock">&nbsp;</span></p>
+            </div>
+        </footer>
+    </div>
 
-<div class="container body-content">
-    @RenderBody()
-    <hr />
-    <footer>
-        <p>&copy; @DateTime.Now.Year - Nexco Finance Solutions</p>
-    </footer>
-</div>
-
-<script src="~/Scripts/jquery-1.10.2.min.js"></script>
-<script src="~/Scripts/bootstrap.min.js"></script>
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
 </body>
 </html>

@@ -1,11 +1,20 @@
 ﻿@model IEnumerable<WebApplication2.Models.User>
 
 @{
-    ViewBag.Title = "User Account";
+    ViewBag.Title = "Admin";
 }
 
-<h2>Manage your account</h2>
+<div style="margin-top: 10px;">
+    <a href="@Url.Action("Index", "AdminUsers")"><button type="button" class="btn btn-secondary">Admin user panel</button></a>
+    <a href="@Url.Action("Index", "AdminIncomes")"><button type="button" class="btn btn-secondary">Admin income panel</button></a>
+    <a href="@Url.Action("Index","AdminExpenditures")"><button type="button" class="btn btn-secondary">Admin expenditure panel</button></a>
+</div>
 
+<h2>View/Edit account details for all users</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
 <table class="table">
     <tr>
         <th>
@@ -19,6 +28,12 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Salary)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Role)
         </th>
         <th></th>
     </tr>
@@ -38,8 +53,15 @@
             @Html.DisplayFor(modelItem => item.Salary)
         </td>
         <td>
+            @Html.DisplayFor(modelItem => item.Password)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Role)
+        </td>
+        <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.UserId }) |
             @Html.ActionLink("Details", "Details", new { id=item.UserId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.UserId })
         </td>
     </tr>
 }

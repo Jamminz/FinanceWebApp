@@ -1,0 +1,123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="WebApplication2.RouteConfig" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>App_Start\RouteConfig.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.MvcApplication" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>Global.asax.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.AboutController">
+    <Position X="0.5" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\AboutController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.AccountController">
+    <Position X="0.5" Y="2" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAEAAAQAAAA=</HashCode>
+      <FileName>Controllers\AccountController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.DashboardController" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\DashboardController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.ExpendituresController" Collapsed="true">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ExpendituresController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.FinanceController" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\FinanceController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.HomeController" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\HomeController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.IncomesController" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAACAAAAAAAAAAAEAAEACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\IncomesController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.ManageController" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACARAAAAAAAAAAAAAAAAAAACAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\ManageController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Controllers.SupportController" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Controllers\SupportController.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Expenditure" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAAAACAE=</HashCode>
+      <FileName>Models\Expenditure.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.Income" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAAAAAAAAACAAAAAAAAAAAAQAAAACAE=</HashCode>
+      <FileName>Models\Income.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.NexcFinDbContext" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Models\NexcFinDbContext.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="WebApplication2.Models.User" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAACAAAIAAAAAAAAgAAAAAAAACAQAAAAAAAAA=</HashCode>
+      <FileName>Models\User.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="WebApplication2.Models.ExpendCategory" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAADAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAgAgAAAAA=</HashCode>
+      <FileName>Models\Expenditure.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="WebApplication2.Models.IncomeCategory" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAgAAIAABAgAAAAAAAAA=</HashCode>
+      <FileName>Models\Income.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

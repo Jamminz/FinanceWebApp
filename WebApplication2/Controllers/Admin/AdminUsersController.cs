@@ -8,115 +8,110 @@ using System.Web;
 using System.Web.Mvc;
 using WebApplication2.Models;
 
-namespace WebApplication2.Controllers
+namespace WebApplication2.Controllers.Admin
 {
-    [Authorize]
-    public class ExpendituresController : Controller
+    [Authorize(Roles="Admin")]
+    public class AdminUsersController : Controller
     {
         private NexcFinaDbContext db = new NexcFinaDbContext();
 
-        // GET: Expenditures
+        // GET: AdminUsers
         public ActionResult Index()
         {
-            string findUser = Session["UserID"].ToString();
-            var currentUser = from o in db.Expenditures
-                              where o.CreatedBy == findUser
-                              select o;
-            return View(currentUser.ToList());
+            return View(db.Users.ToList());
         }
 
-        // GET: Expenditures/Details/5
+        // GET: AdminUsers/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Expenditure expenditure = db.Expenditures.Find(id);
-            if (expenditure == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(expenditure);
+            return View(user);
         }
 
-        // GET: Expenditures/Create
+        // GET: AdminUsers/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Expenditures/Create
+        // POST: AdminUsers/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ExpenditureId,Amount,Category,Desciption,CreatedBy")] Expenditure expenditure)
+        public ActionResult Create([Bind(Include = "UserId,UserName,FullName,Email,Salary,Password,Role")] User user)
         {
             if (ModelState.IsValid)
             {
-                expenditure.CreatedBy = Session["UserID"].ToString();
-                db.Expenditures.Add(expenditure);
+                db.Users.Add(user);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(expenditure);
+            return View(user);
         }
 
-        // GET: Expenditures/Edit/5
+        // GET: AdminUsers/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Expenditure expenditure = db.Expenditures.Find(id);
-            if (expenditure == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(expenditure);
+            return View(user);
         }
 
-        // POST: Expenditures/Edit/5
+        // POST: AdminUsers/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ExpenditureId,Amount,Category,Desciption,CreatedBy")] Expenditure expenditure)
+        public ActionResult Edit([Bind(Include = "UserId,UserName,FullName,Email,Salary,Password,Role")] User user)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(expenditure).State = EntityState.Modified;
+                db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(expenditure);
+            return View(user);
         }
 
-        // GET: Expenditures/Delete/5
+        // GET: AdminUsers/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Expenditure expenditure = db.Expenditures.Find(id);
-            if (expenditure == null)
+            User user = db.Users.Find(id);
+            if (user == null)
             {
                 return HttpNotFound();
             }
-            return View(expenditure);
+            return View(user);
         }
 
-        // POST: Expenditures/Delete/5
+        // POST: AdminUsers/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Expenditure expenditure = db.Expenditures.Find(id);
-            db.Expenditures.Remove(expenditure);
+            User user = db.Users.Find(id);
+            db.Users.Remove(user);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

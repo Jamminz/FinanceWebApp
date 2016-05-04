@@ -135,7 +135,9 @@
     <Content Include="scripts\ai.0.22.9-build00167.min.js" />
     <Content Include="scripts\bootstrap.js" />
     <Content Include="scripts\bootstrap.min.js" />
+    <Content Include="ClassDiagram1.cd" />
     <None Include="scripts\jquery-1.10.2.intellisense.js" />
+    <Content Include="scripts\clock.js" />
     <Content Include="scripts\jquery-1.10.2.js" />
     <Content Include="scripts\jquery-1.10.2.min.js" />
     <None Include="scripts\jquery.validate-vsdoc.js" />
@@ -149,6 +151,9 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\AboutController.cs" />
+    <Compile Include="Controllers\Admin\AdminExpendituresController.cs" />
+    <Compile Include="Controllers\Admin\AdminIncomesController.cs" />
+    <Compile Include="Controllers\Admin\AdminUsersController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\ExpendituresController.cs" />
     <Compile Include="Controllers\FinanceController.cs" />
@@ -162,7 +167,8 @@
     </Compile>
     <Compile Include="Models\Expenditure.cs" />
     <Compile Include="Models\Income.cs" />
-    <Compile Include="Models\NexcFinDbContext.cs" />
+    <Compile Include="Models\NexcFinaDbContext.cs" />
+    <Compile Include="Models\NexcoRoleProvider.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -199,6 +205,21 @@
     <Content Include="Views\Incomes\Edit.cshtml" />
     <Content Include="Views\Incomes\Index.cshtml" />
     <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\AdminUsers\Create.cshtml" />
+    <Content Include="Views\AdminUsers\Delete.cshtml" />
+    <Content Include="Views\AdminUsers\Details.cshtml" />
+    <Content Include="Views\AdminUsers\Edit.cshtml" />
+    <Content Include="Views\AdminUsers\Index.cshtml" />
+    <Content Include="Views\AdminExpenditures\Create.cshtml" />
+    <Content Include="Views\AdminExpenditures\Delete.cshtml" />
+    <Content Include="Views\AdminExpenditures\Details.cshtml" />
+    <Content Include="Views\AdminExpenditures\Edit.cshtml" />
+    <Content Include="Views\AdminExpenditures\Index.cshtml" />
+    <Content Include="Views\AdminIncomes\Create.cshtml" />
+    <Content Include="Views\AdminIncomes\Delete.cshtml" />
+    <Content Include="Views\AdminIncomes\Details.cshtml" />
+    <Content Include="Views\AdminIncomes\Edit.cshtml" />
+    <Content Include="Views\AdminIncomes\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

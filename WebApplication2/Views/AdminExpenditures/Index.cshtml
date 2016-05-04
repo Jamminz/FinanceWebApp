@@ -1,16 +1,16 @@
 ﻿@model IEnumerable<WebApplication2.Models.Expenditure>
 
 @{
-    ViewBag.Title = "Expenditure";
+    ViewBag.Title = "Admin";
 }
 
 <div style="margin-top: 10px;">
-    <a href="@Url.Action("Index", "Incomes")"><button type="button" class="btn btn-secondary">Income</button></a>
-    <a href="@Url.Action("Index","Expenditures")"><button type="button" class="btn btn-secondary">Expenditure</button></a>
+    <a href="@Url.Action("Index", "AdminUsers")"><button type="button" class="btn btn-secondary">Admin user panel</button></a>
+    <a href="@Url.Action("Index", "AdminIncomes")"><button type="button" class="btn btn-secondary">Admin income panel</button></a>
+    <a href="@Url.Action("Index","AdminExpenditures")"><button type="button" class="btn btn-secondary">Admin expenditure panel</button></a>
 </div>
 
-
-<h2>Manage your expenditures</h2>
+<h2>View/Edit expenditure entries for all users</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
@@ -26,6 +26,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Desciption)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CreatedBy)
+        </th>
         <th></th>
     </tr>
 
@@ -40,7 +43,9 @@
         <td>
             @Html.DisplayFor(modelItem => item.Desciption)
         </td>
-
+        <td>
+            @Html.DisplayFor(modelItem => item.CreatedBy)
+        </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ExpenditureId }) |
             @Html.ActionLink("Details", "Details", new { id=item.ExpenditureId }) |
