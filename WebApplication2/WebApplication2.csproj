@@ -128,6 +128,22 @@
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\stepEight.png" />
+    <Content Include="Content\Images\stepFiveA.png" />
+    <Content Include="Content\Images\stepFiveB.png" />
+    <Content Include="Content\Images\stepFiveC.png" />
+    <Content Include="Content\Images\stepFiveD.png" />
+    <Content Include="Content\Images\stepFour.png" />
+    <Content Include="Content\Images\stepOne.png" />
+    <Content Include="Content\Images\stepSeven.png" />
+    <Content Include="Content\Images\stepSevenA.png" />
+    <Content Include="Content\Images\stepSevenB.png" />
+    <Content Include="Content\Images\stepSevenC.png" />
+    <Content Include="Content\Images\stepSix.png" />
+    <Content Include="Content\Images\stepSixA.png" />
+    <Content Include="Content\Images\stepSixB.png" />
+    <Content Include="Content\Images\stepThree.png" />
+    <Content Include="Content\Images\stepTwo.png" />
     <Content Include="Content\Site.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
