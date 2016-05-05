@@ -9,7 +9,7 @@ namespace WebApplication2.Models
 {
     public class NexcoRoleProvider : RoleProvider
     {
-        private NexcFinaDbContext db = new NexcFinaDbContext();
+        private LastDbContext db = new LastDbContext();
 
         public override string[] GetRolesForUser(string username)
         {

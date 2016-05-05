@@ -13,7 +13,7 @@ namespace WebApplication2.Models
         public int ExpenditureId { get; set; }
 
         [Required]
-        public decimal Amount { get; set; }
+        public decimal? Amount { get; set; }
 
         [Required]
         public ExpendCategory Category { get; set; }

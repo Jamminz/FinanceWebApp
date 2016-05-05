@@ -13,7 +13,7 @@ namespace WebApplication2.Controllers
     [Authorize]
     public class IncomesController : Controller
     {
-        private NexcFinaDbContext db = new NexcFinaDbContext();
+        private LastDbContext db = new LastDbContext();
 
         // GET: Incomes
         public ActionResult Index()

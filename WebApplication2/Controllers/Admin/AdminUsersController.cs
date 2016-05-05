@@ -13,7 +13,7 @@ namespace WebApplication2.Controllers.Admin
     [Authorize(Roles="Admin")]
     public class AdminUsersController : Controller
     {
-        private NexcFinaDbContext db = new NexcFinaDbContext();
+        private LastDbContext db = new LastDbContext();
 
         // GET: AdminUsers
         public ActionResult Index()

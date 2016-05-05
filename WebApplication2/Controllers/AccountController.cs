@@ -14,6 +14,8 @@ namespace WebApplication2.Controllers
 {
     public class AccountController : Controller
     {
+        private LastDbContext db = new LastDbContext();
+
         // GET: Login
         public ActionResult Index()
         {
@@ -23,11 +25,10 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Index(User user, string returnUrl)
         {
-                using (NexcFinaDbContext db = new NexcFinaDbContext())
-                {
+             
                     string username = user.UserName;
                     string password = user.Password;
-                    bool userValid = db.Users.Any(o => o.UserName == username && user.Password == password);
+                    bool userValid = db.Users.Any(o => o.UserName == username && user.Password == o.Password);
                     bool isAdmin = false;
 
                     if (userValid)
@@ -59,7 +60,6 @@ namespace WebApplication2.Controllers
                         
                     }
                     else ModelState.AddModelError("", "The user name or password does not exist");
-                }
 
             return View();
         }
@@ -82,8 +82,6 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Register(User usr)
         {
-            using (NexcFinaDbContext db = new NexcFinaDbContext())
-            {
                     if (db.Users.Any(o => o.UserName == usr.UserName))
                     {
                         ModelState.AddModelError("", "Username already exists");
@@ -96,8 +94,6 @@ namespace WebApplication2.Controllers
 
                         return RedirectToAction("Index", "Account");
                     }
-
-                }
 
             return View();
         }

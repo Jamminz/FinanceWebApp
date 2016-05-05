@@ -167,7 +167,7 @@
     </Compile>
     <Compile Include="Models\Expenditure.cs" />
     <Compile Include="Models\Income.cs" />
-    <Compile Include="Models\NexcFinaDbContext.cs" />
+    <Compile Include="Models\LastDbContext.cs" />
     <Compile Include="Models\NexcoRoleProvider.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

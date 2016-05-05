@@ -12,7 +12,7 @@ namespace WebApplication2.Controllers.Admin
 {
     public class AdminIncomesController : Controller
     {
-        private NexcFinaDbContext db = new NexcFinaDbContext();
+        private LastDbContext db = new LastDbContext();
 
         // GET: AdminIncomes
         public ActionResult Index()

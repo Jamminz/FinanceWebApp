@@ -6,7 +6,7 @@ using System.Web;
 
 namespace WebApplication2.Models
 {
-    public class NexcFinaDbContext : DbContext
+    public class LastDbContext : DbContext
     {
         public DbSet<User> Users { get; set; } 
         public DbSet<Expenditure> Expenditures { get; set; }

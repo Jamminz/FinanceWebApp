@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -9,21 +10,56 @@ namespace WebApplication2.Controllers
 {
     public class DashboardController : Controller
     {
-        private NexcFinaDbContext db = new NexcFinaDbContext();
-        
+        private LastDbContext db = new LastDbContext();
+
+        public IQueryable<decimal?> GetInfo(string findUser, string findCat)
+        {
+                switch (findCat.ToLower())
+                {
+                    case "entertainment":
+                    case "education":
+                    case "food":
+                    case "health":
+                    case "utility":
+
+                        var returnExpense = from o in db.Expenditures
+                                            where o.CreatedBy == findUser && o.Category.ToString() == findCat
+                                            select o.Amount;
+                        return (returnExpense);
+
+                    case "bonus":
+                    case "liquidation":
+                    case "refund":
+                    case "overtime":
+
+                        var returnIncome = from o in db.Incomes
+                                           where o.CreatedBy == findUser && o.Category.ToString() == findCat
+                                           select o.Amount;
+                        return (returnIncome);
+
+                    default:
+
+                        var salary = from o in db.Users
+                                     where o.UserName == findUser
+                                     select o.Salary;
+                        return (salary);
+
+                }
+
+        }
+
         // GET: Dashboard
         [Authorize]
         public ActionResult Index()
         {
-            string findUser = Session["UserID"].ToString();
+
+           string findUser = Session["UserID"].ToString();
 
             /*************************************************************************************************/
 
             ViewBag.salary = 0;
 
-            var salary = from o in db.Users
-                             where o.UserName == findUser
-                             select o.Salary;
+            var salary = GetInfo(findUser, "salary");
 
             foreach (var i in salary)
             {
@@ -35,11 +71,7 @@ namespace WebApplication2.Controllers
 
             ViewBag.entertainmentTotal = 0;
 
-            string findCat = "Entertainment";
-
-            var entertainment = from o in db.Expenditures
-                                where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                                select o.Amount;
+            var entertainment = GetInfo(findUser, "entertainment");
 
             foreach (var i in entertainment)
             {
@@ -48,13 +80,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Education";
-
             ViewBag.educationTotal = 0;
 
-            var education = from o in db.Expenditures
-                                where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                                select o.Amount;
+            var education = GetInfo(findUser, "education");
             foreach (var i in education)
             {
                 ViewBag.educationTotal += i;
@@ -62,13 +90,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Food";
-
             ViewBag.foodTotal = 0;
 
-            var food = from o in db.Expenditures
-                            where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                            select o.Amount;
+            var food = GetInfo(findUser, "food");
             foreach (var i in food)
             {
                 ViewBag.foodTotal += i;
@@ -76,13 +100,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Health";
-
             ViewBag.healthTotal = 0;
 
-            var health = from o in db.Expenditures
-                       where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                       select o.Amount;
+            var health = GetInfo(findUser, "health");
             foreach (var i in health)
             {
                 ViewBag.healthTotal += i;
@@ -90,13 +110,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Utility";
-
             ViewBag.utilityTotal = 0;
 
-            var utility = from o in db.Expenditures
-                         where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                         select o.Amount;
+            var utility = GetInfo(findUser, "utility");
             foreach (var i in utility)
             {
                 ViewBag.utilityTotal += i;
@@ -104,13 +120,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Bonus";
-
             ViewBag.bonusTotal = 0;
 
-            var bonus = from o in db.Incomes
-                            where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                            select o.Amount;
+            var bonus = GetInfo(findUser, "bonus");
             foreach (var i in bonus)
             {
                 ViewBag.bonusTotal += i;
@@ -118,13 +130,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Liquidation";
-
             ViewBag.liquidationTotal = 0;
 
-            var liquidation = from o in db.Incomes
-                        where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                        select o.Amount;
+            var liquidation = GetInfo(findUser, "liquidation");
             foreach (var i in liquidation)
             {
                 ViewBag.liquidationTotal += i;
@@ -132,13 +140,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Refund";
-
             ViewBag.refundTotal = 0;
 
-            var refund = from o in db.Incomes
-                            where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                            select o.Amount;
+            var refund = GetInfo(findUser, "refund");
             foreach (var i in refund)
             {
                 ViewBag.refundTotal += i;
@@ -146,13 +150,9 @@ namespace WebApplication2.Controllers
 
             /*************************************************************************************************/
 
-            findCat = "Overtime";
-
             ViewBag.overtimeTotal = 0;
 
-            var overtime = from o in db.Incomes
-                         where o.CreatedBy == findUser && o.Category.ToString() == findCat
-                         select o.Amount;
+            var overtime = GetInfo(findUser, "overtime");
             foreach (var i in overtime)
             {
                 ViewBag.overtimeTotal += i;
