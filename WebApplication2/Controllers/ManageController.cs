@@ -18,6 +18,7 @@ namespace WebApplication2.Controllers
         [Authorize]
         public ActionResult Index()
         {
+            //Queries the database for the details of the current user
             string findUser = Session["UserID"].ToString();
             var currentUser = from o in db.Users
                               where o.UserName == findUser

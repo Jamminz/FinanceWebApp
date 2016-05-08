@@ -18,6 +18,7 @@ namespace WebApplication2.Controllers
         // GET: Incomes
         public ActionResult Index()
         {
+            //Queries the database for entries created by the current user
             string findUser = Session["UserID"].ToString();
             var currentUser = from o in db.Incomes
                               where o.CreatedBy == findUser
@@ -55,6 +56,7 @@ namespace WebApplication2.Controllers
         {
             if (ModelState.IsValid)
             {
+                //sets the hidden value to the user the entry is created by and submits the entry to the database
                 income.CreatedBy = Session["UserID"].ToString();
                 db.Incomes.Add(income);
                 db.SaveChanges();

@@ -1,6 +1,8 @@
 ﻿
 function init() {
+    //creates an area to display the clock without refreshing the whole screen
     timeShow = document.createTextNode("");
+    //gets the element by the id of 'clock'
     document.getElementById("clock").appendChild(timeShow);
 }
 

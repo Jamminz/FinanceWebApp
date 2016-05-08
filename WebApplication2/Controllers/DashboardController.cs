@@ -12,6 +12,8 @@ namespace WebApplication2.Controllers
     {
         private LastDbContext db = new LastDbContext();
 
+
+        // function for determing which query to use to get data for the graph
         public IQueryable<decimal?> GetInfo(string findUser, string findCat)
         {
                 switch (findCat.ToLower())
@@ -52,6 +54,8 @@ namespace WebApplication2.Controllers
         [Authorize]
         public ActionResult Index()
         {
+
+            //each section calls the above function and then sets a ViewBag value to the sum of each category of expense/income
 
            string findUser = Session["UserID"].ToString();
 
@@ -159,6 +163,8 @@ namespace WebApplication2.Controllers
             }
 
             /*************************************************************************************************/
+
+            // sums remaining salary
 
             ViewBag.remainingSalary = ViewBag.salary - ViewBag.entertainmentTotal - ViewBag.educationTotal -
                                       ViewBag.foodTotal -

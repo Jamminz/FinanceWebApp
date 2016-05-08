@@ -28,24 +28,30 @@ namespace WebApplication2.Controllers
              
                     string username = user.UserName;
                     string password = user.Password;
+                    //Check if there is a user with the details provided
                     bool userValid = db.Users.Any(o => o.UserName == username && user.Password == o.Password);
                     bool isAdmin = false;
 
                     if (userValid)
                     {
+                        //if user is found, authenticate
                         FormsAuthentication.SetAuthCookie(username, true);
                         Session["UserID"] = username;
 
+                        //retrieve current user from db
                         var adminCheck = from o in db.Users
                             where o.UserName == username
                             select o;
 
+
+                        // check if retrieved user has the role of admin
                         foreach (var i in adminCheck)
                         {
                             if (i.Role == Roles.Admin)
                                 isAdmin = true;
                         }
 
+                        // set session variable to not null in order to display admin panel shortcut. for SHORTCUT ONLY, roles handled by role provider
                         if (isAdmin)
                         {
                             Session["Admin"] = 1;
@@ -59,6 +65,7 @@ namespace WebApplication2.Controllers
                         }
                         
                     }
+                    //error message if user not found
                     else ModelState.AddModelError("", "The user name or password does not exist");
 
             return View();
@@ -67,6 +74,7 @@ namespace WebApplication2.Controllers
 
         public ActionResult LogOff()
         {
+            // delete auth cookie, set session variables to null
             FormsAuthentication.SignOut();
             Session["UserID"] = null;
             Session["Admin"] = null;
@@ -82,12 +90,14 @@ namespace WebApplication2.Controllers
         [HttpPost]
         public ActionResult Register(User usr)
         {
+                    // check if username already exists on database
                     if (db.Users.Any(o => o.UserName == usr.UserName))
                     {
                         ModelState.AddModelError("", "Username already exists");
                     }
                     else
                     {
+                        // sets default role as user and adds user to the database
                         usr.Role = Roles.User;
                         db.Users.Add(usr);
                         db.SaveChanges();
